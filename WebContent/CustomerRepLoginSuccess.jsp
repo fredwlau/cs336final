@@ -11,7 +11,7 @@
 		Welcome <%=session.getAttribute("user")%> 
 		
 		<br>
-		<a href='EndUserPage.jsp'>Proceed to account page</a>
+		<a href='CustomerRepPage.jsp'>Proceed to account page</a>
 		<br>
 		<%
     }

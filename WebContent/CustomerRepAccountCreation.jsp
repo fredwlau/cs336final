@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Account Creation</title>
+<title>Customer Representative Account Creation</title>
 </head>
 <body>
 
 <br>
-	<form method="post" action="EndUserAccountCreationSQL.jsp">
+	<form method="post" action="CustomerRepAccountCreationSQL.jsp">
 	<table>
 	<tr>    
 	<td>Username</td><td><input type="text" name="newUsername"></td>
@@ -30,31 +30,6 @@
 	<td>Phone Number</td><td><input type="text" name="newPhoneNumber"></td>
 	</tr>
 	<tr>
-	
-	<tr>
-	<td></td>
-	</tr>
-
-	<tr>
-	<td>Mailing Address</td>
-	</tr>
-	
-	<tr>
-	<td></td>
-	</tr>
-	
-	<tr>
-	<td>Street Name</td><td><input type="text" name="newStreetName"></td>
-	</tr>
-	<tr>
-	<td>City</td><td><input type="text" name="newCity"></td>
-	</tr>
-	<tr>
-	<td>ZipCode</td><td><input type="text" name="newZipCode"></td>
-	</tr>
-	<tr>
-	<td>State</td><td><input type="text" name="newState"></td>
-	</tr>
 	</table>
 	
 	<input type="submit" value="Create Account">
@@ -62,7 +37,7 @@
 <br>
 
 <br>
-	<form method="post" action="index.jsp">
+	<form method="post" action="AdminPage.jsp">
 	<input type="submit" value="Cancel">
 	</form>
 <br>
