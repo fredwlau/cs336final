@@ -3,6 +3,8 @@
 <!--Import some libraries that have classes that we need -->
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,18 +34,7 @@
 			return;
 		}
 		
-		String changeUsername = request.getParameter("changeUsername");
-		
-		if(changeUsername == null || changeUsername == ""){
-			out.println("Change username can't be empty <a href='CustomerRepAccountDeletion.jsp'>try again</a>");
-					
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-			con.close();
-			
-			return;
-		}
-		
-		//Pulls username attribute for CustomerRep Account
+		//Pulls username attribute for EndUser Account
 		ResultSet rs;
 		rs = stmt.executeQuery("SELECT Username FROM CustomerRep WHERE Username='" + deleteUsername + "'");
 				
@@ -55,30 +46,9 @@
 			result = rs.getString("Username");
 		}
 		
-		//Determines if a username belongs to CustomerRep or not
+		//Determines if a username belongs to EndUser or not
 		if(result == null || result == ""){
-			out.println("Username isn't a Customer Representative <a href='CustomerRepAccountDeletion.jsp'>try again</a>");
-			
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-			con.close();
-			
-			return;
-		}
-
-		//Checks to make sure that update username isn't already in the database
-		rs = stmt.executeQuery("SELECT Username FROM Account WHERE Username='" + changeUsername + "'");
-		
-		//Will hold the query result
-		String updateResult = "";
-				
-		//Assigns the result to a variable
-		while(rs.next()){
-			updateResult = rs.getString("Username");
-		}
-		
-		//Determines if a change username belongs to Account or not
-		if(updateResult != null && updateResult != ""){
-			out.println("Change Username already exists, choose a different one <a href='CustomerRepAccountDeletion.jsp'>try again</a>");
+			out.println("Username isn't an Customer Rep <a href='CustomerRepAccountDeletion.jsp'>try again</a>");
 			
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -86,25 +56,39 @@
 			return;
 		}
 		
-		//Make a delete statement for the Account table:
-		String update = "UPDATE Account SET Username = ? WHERE Username = ?";
-					
+		//String delete = "SELECT Username FROM Account where Username = ?";
+		String del1 = "DELETE FROM CustomerRep where Username = ?";
+		String delete = "DELETE FROM Account where Username = ?";
+		
 		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		PreparedStatement ps1 = con.prepareStatement(update);
+		PreparedStatement ps1 = con.prepareStatement(del1);
+		PreparedStatement ps2 = con.prepareStatement(delete);
 
+		//ps1.setInt(1);
+		//int del = ps1.executeUpdate();
+		//System.out.println("Deleted Account:", + del);
+
+					//********************************************************************
 		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		ps1.setString(1, changeUsername);
-		ps1.setString(2, deleteUsername);
+		ps1.setString(1, deleteUsername);
+		ps2.setString(1, deleteUsername);
+
+		out.print("User Account has been successfully deleted");
+
+		
+		//ps1.setString(2, deleteUsername);
 		ps1.executeUpdate();
+		ps2.executeUpdate();
+
 					
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();
-		out.print("Customer Rep Account Successfully Created");
-		
-	} catch (Exception ex) {
-		out.print(ex);
-		out.print("Failed to Create Customer Rep Account");
 	}
+								
+	 catch (Exception ex) {
+		out.print(ex);
+		out.print("Failed to Delete Customer Rep Account");
+	 }
 %>
 
 <br>

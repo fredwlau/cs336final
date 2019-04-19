@@ -32,16 +32,6 @@
 			return;
 		}
 		
-		String changeUsername = request.getParameter("changeUsername");
-		
-		if(changeUsername == null || changeUsername == ""){
-			out.println("Change username can't be empty <a href='EndUserAccountDeletion.jsp'>try again</a>");
-					
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-			con.close();
-			
-			return;
-		}
 		
 		//Pulls username attribute for EndUser Account
 		ResultSet rs;
@@ -64,42 +54,32 @@
 			
 			return;
 		}
-		
-		//Checks to make sure that update username isn't already in the database
-		rs = stmt.executeQuery("SELECT Username FROM Account WHERE Username='" + changeUsername + "'");
-		
-		//Will hold the query result
-		String updateResult = "";
+		//String delete = "SELECT Username FROM Account where Username = ?";
+				String del1 = "DELETE FROM EndUser where Username = ?";
+				String delete = "DELETE FROM Account where Username = ?";
 				
-		//Assigns the result to a variable
-		while(rs.next()){
-			updateResult = rs.getString("Username");
-		}
-		
-		//Determines if a change username belongs to Account or not
-		if(updateResult != null && updateResult != ""){
-			out.println("Change Username already exists, choose a different one <a href='EndUserAccountDeletion.jsp'>try again</a>");
-			
-			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-			con.close();
-			
-			return;
-		}
-		
-		//Make a delete statement for the Account table:
-		String update = "UPDATE Account SET Username = ? WHERE Username = ?";
-					
-		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		PreparedStatement ps1 = con.prepareStatement(update);
+				//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+				PreparedStatement ps1 = con.prepareStatement(del1);
+				PreparedStatement ps2 = con.prepareStatement(delete);
 
-		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		ps1.setString(1, changeUsername);
-		ps1.setString(2, deleteUsername);
-		ps1.executeUpdate();
-					
-		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-		con.close();
-		out.print("End User Account Successfully Deleted");
+				//ps1.setInt(1);
+				//int del = ps1.executeUpdate();
+				//System.out.println("Deleted Account:", + del);
+
+							//********************************************************************
+				//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+				ps1.setString(1, deleteUsername);
+				ps2.setString(1, deleteUsername);
+
+				
+				//ps1.setString(2, deleteUsername);
+				ps1.executeUpdate();
+				ps2.executeUpdate();
+
+				out.print("User Account has been successfully deleted");
+							
+				//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+				con.close();
 		
 	} catch (Exception ex) {
 		out.print(ex);

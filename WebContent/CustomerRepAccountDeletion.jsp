@@ -8,9 +8,7 @@
 </head>
 <body>
 
-The users entire account won't be deleted so certain information can be preserved.
-Enter cdelete along with a number such as cdelete1 in the change name to box. Make sure the
-delete name isn't already used.
+Please enter CSR username to delete
 <br>
 	<form method="post" action="CustomerRepAccountDeletionSQL.jsp">
 	<table>
@@ -18,7 +16,6 @@ delete name isn't already used.
 	<td>Username</td><td><input type="text" name="deleteUsername"></td>
 	</tr>
 	<tr>    
-	<td>Change name to</td><td><input type="text" name="changeUsername"></td>
 	</tr>
 	</table>
 	
