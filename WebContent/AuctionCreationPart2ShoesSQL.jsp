@@ -509,6 +509,26 @@
 		ps4.setString(5, sellerUsername);
 		ps4.setInt(6, lastCID);
 		ps4.executeUpdate(); 
+		
+		//set initial bid so we can display items in browse items that dont have bids
+		ResultSet re;
+		re = stmt.executeQuery("SELECT AID FROM AuctionItem WHERE ClothingCID='" + lastCID + "'");
+		
+		int new_AID = 0;
+		int autobidprice = 0;
+		while(re.next()){
+			new_AID = re.getInt("AID");
+		}
+		
+		String insert5 = "INSERT INTO Bids(AID, BidPrice, Username, AutomaticBiddingPrice)"
+				+ "VALUES (?, ?, ?, ?)";
+		PreparedStatement ps5 = con.prepareStatement(insert5);
+		
+		ps5.setInt(1, new_AID);
+		ps5.setInt(2, initialPrice);
+		ps5.setString(3, sellerUsername);
+		ps5.setInt(4, autobidprice);
+		ps5.executeUpdate();
 					
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();

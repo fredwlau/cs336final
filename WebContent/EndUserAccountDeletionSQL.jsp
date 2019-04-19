@@ -55,12 +55,14 @@
 			return;
 		}
 		//String delete = "SELECT Username FROM Account where Username = ?";
-				String del1 = "DELETE FROM EndUser where Username = ?";
-				String delete = "DELETE FROM Account where Username = ?";
+				String delete_enduser = "DELETE FROM EndUser where Username = ?";
+				String delete_account = "DELETE FROM Account where Username = ?";
+				String delete_buyer = "DELETE FROM Buyer where Username =?";
 				
 				//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-				PreparedStatement ps1 = con.prepareStatement(del1);
-				PreparedStatement ps2 = con.prepareStatement(delete);
+				PreparedStatement ps1 = con.prepareStatement(delete_buyer);
+				PreparedStatement ps2 = con.prepareStatement(delete_enduser);
+				PreparedStatement ps3 = con.prepareStatement(delete_account);
 
 				//ps1.setInt(1);
 				//int del = ps1.executeUpdate();
@@ -70,11 +72,13 @@
 				//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
 				ps1.setString(1, deleteUsername);
 				ps2.setString(1, deleteUsername);
+				ps3.setString(1, deleteUsername);
 
 				
 				//ps1.setString(2, deleteUsername);
 				ps1.executeUpdate();
 				ps2.executeUpdate();
+				ps3.executeUpdate();
 
 				out.print("User Account has been successfully deleted");
 							

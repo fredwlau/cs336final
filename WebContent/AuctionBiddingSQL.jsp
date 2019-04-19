@@ -24,7 +24,7 @@
 		String newAID = request.getParameter("newAID");
 		
 		if(newAID == null || newAID == ""){
-			out.println("Auction AID can't be empty <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("Auction AID can't be empty <a href='BrowseItems.jsp'>try again</a>");
 					
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -35,7 +35,7 @@
 		String newBidPrice = request.getParameter("newBidPrice");
 					
 		if(newBidPrice == null || newBidPrice == ""){
-			out.println("Bid Price can't be empty <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("Bid Price can't be empty <a href='BrowseItems.jsp'>try again</a>");
 					
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -46,7 +46,7 @@
 		//Checks to make sure only an integer is used
 		for(int i=0; i<newBidPrice.length(); i++){
 			if(newBidPrice.charAt(i) < '0' || newBidPrice.charAt(i) > '9'){
-				out.println("Bid Price must be an integer <a href='AuctionBidding.jsp'>try again</a>");
+				out.println("Bid Price must be an integer <a href='BrowseItems.jsp'>try again</a>");
 				
 				//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 				con.close();
@@ -64,7 +64,7 @@
 			//Checks to make sure only an integer is used
 			for(int i=0; i<newAutomaticBiddingPrice.length(); i++){
 				if(newAutomaticBiddingPrice.charAt(i) < '0' || newAutomaticBiddingPrice.charAt(i) > '9'){
-					out.println("Automatic Bid must be an integer <a href='AuctionBidding.jsp'>try again</a>");
+					out.println("Automatic Bid must be an integer <a href='BrowseItems.jsp'>try again</a>");
 					
 					//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 					con.close();
@@ -94,7 +94,7 @@
 		
 		//Checks to make sure the Auction exists
 		if(testAID == null || testAID == ""){
-			out.println("AID doesn't exist <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("AID doesn't exist <a href='BrowseItems.jsp'>try again</a>");
 			
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -108,7 +108,7 @@
 		
 		//Checks to make sure the auction isn't past its close out date
 		if(closeOutDateTime.before(current)){
-			out.println("Auction is past its close out date <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("Auction is past its close out date <a href='BrowseItems.jsp'>try again</a>");
 			
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -122,7 +122,7 @@
 		
 		//Checks to make sure the seller of the auction isn't trying to bid on their own auction
 		if(buyerUsername.equals(sellerUsername)){
-			out.println("Can't bid on your own auction <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("Can't bid on your own auction <a href='BrowseItems.jsp'>try again</a>");
 					
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -190,7 +190,7 @@
 		
 		//Checks the users bid against the initial price, current bid, and bid increments. Also checks to make sure the bidder doesn't already have the highest bid
 		if(originalInitialPrice > bidPrice){
-			out.println("Bid Price can't be lower than the initial price of " + originalInitialPrice + " and the current bid price is " + originalBidPrice +  " with minimum bid increments of " + originalMinBid +" <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("Bid Price can't be lower than the initial price of " + originalInitialPrice + " and the current bid price is " + originalBidPrice +  " with minimum bid increments of " + originalMinBid +" <a href='BrowseItems.jsp'>try again</a>");
 					
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -198,7 +198,7 @@
 			return;
 		}
 		else if(originalBidPrice >= bidPrice){
-			out.println("The initial price is " + originalInitialPrice + " and the Bid Price must be greater than previous bid of " + originalBidPrice + " with minimum bid increments of " + originalMinBid + " <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("The initial price is " + originalInitialPrice + " and the Bid Price must be greater than previous bid of " + originalBidPrice + " with minimum bid increments of " + originalMinBid + " <a href='BrowseItems.jsp'>try again</a>");
 					
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -207,7 +207,7 @@
 		}
 		else if((bidPrice - originalBidPrice < originalMinBid) && equals == false){
 			if(originalBidPrice != 0){
-				out.println("The Bid Price must be greater than previous bid of " + originalBidPrice + " with mininum bid increments of " + originalMinBid + " <a href='AuctionBidding.jsp'>try again</a>");
+				out.println("The Bid Price must be greater than previous bid of " + originalBidPrice + " with mininum bid increments of " + originalMinBid + " <a href='BrowseItems.jsp'>try again</a>");
 				
 				//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 				con.close();
@@ -216,7 +216,7 @@
 			}
 		}
 		else if(highestBidUsername != null && highestBidUsername != "" && highestBidUsername.equals(buyerUsername)){
-			out.println("You already have the highest bid, save your money <a href='AuctionBidding.jsp'>try again</a>");
+			out.println("You already have the highest bid, save your money <a href='BrowseItems.jsp'>try again</a>");
 			
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
