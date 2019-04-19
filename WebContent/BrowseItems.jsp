@@ -14,8 +14,7 @@
          user = "cs336auction"  password = "cs336auction"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
-      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, ItemSales, BidPrice
-      FROM AuctionItem a JOIN Clothing c ON a.ClothingCID=c.CID  JOIN Bids b ON a.AID=b.AID;
+      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID JOIN Bids b on b.AID = a.AID GROUP BY a.AID;
       </sql:query>
  
       <table border = "1" width = "100%">
@@ -29,7 +28,6 @@
 	    	<th>Clothing Brand</th>
 	    	<th>Gender</th>
 	    	<th>Color</th>
-	    	<th>Sales</th>
 	    	<th>Current Bid</th>
          </tr>
          
@@ -44,7 +42,6 @@
                <td><c:out value = "${row.Brand}"/></td>
                <td><c:out value = "${row.Gender}"/></td>
                <td><c:out value = "${row.Color}"/></td>
-               <td><c:out value = "${row.ItemSales}"/></td>
                <td><c:out value = "${row.BidPrice}"/></td>
             </tr>
          </c:forEach>
