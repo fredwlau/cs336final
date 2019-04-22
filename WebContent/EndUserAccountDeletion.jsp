@@ -2,11 +2,20 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
+<center>
 <head>
 <meta charset="ISO-8859-1">
 <title>End User Account Deletion</title>
 </head>
 <body>
+
+
+<style>
+body {
+background-color: #ff0000
+}
+</style>
 
 Please enter username to delete
 <br>
@@ -28,6 +37,6 @@ Please enter username to delete
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</center>
 </body>
 </html>

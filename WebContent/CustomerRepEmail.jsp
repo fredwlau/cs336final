@@ -5,8 +5,20 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<center>
+
+<style>
+body {
+background-color: #FAFAD2
+}
+</style>
+
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<p style="font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">
+
 <title>Customer Rep Email SQL</title>
 </head>
 <body>
@@ -44,6 +56,8 @@
 				originalContent=rs2.getString("Content");
 				out.print("ORIGINAL QUESTION-----------------------------------------------------------------------------------------------");
 				out.print("<br>");
+				out.print('\n');
+				out.print('\n');
 				out.print("ORIGINAL DATE AND TIME: " + originalDT);
 				out.print("<br>");
 				out.print("ORIGINAL SUBJECT: " + originalSubject);
@@ -58,9 +72,12 @@
 				out.print("<br>");
 				out.print("-------->SUBJECT: " + subject);
 				out.print("<br>");
+				out.print('\n');
 				out.print("-------->MESSAGE: " +content);
 				out.print("<br>");
 				out.print("<br>");
+				out.print('\n');
+				out.print('\n');
 				}
 			else{
 				continue;
@@ -77,6 +94,8 @@
 			dateAndTime = rs.getString("Date_Time");
 			content = rs.getString("Content");
 			out.print("UNANSWERED QUESTIONS-----------------------------------------------------------------------------------------------------------");
+			out.print('\n');
+			out.print('\n');
 			out.print("<br>");
 			out.print("FROM: " + username);
 			out.print("<br>");
@@ -91,10 +110,14 @@
 			out.print("<input type=\"hidden\" id=\"thisField0\" name=\"username\" value=" + username + ">");
 			out.print("<input type=\"hidden\" id=\"thisField1\" name=\"subject\" value=" + subject + ">");
 			out.print("<input type=\"hidden\" id=\"thisField2\" name=\"dateAndTime\" value=" + dateAndTime + ">");
+			out.print('\n');
 			out.print("<input type=\"hidden\" id=\"thisField3\" name=\"content\" value=" + content + ">");
 			out.print("<input type=\"submit\" value=\"Reply\">");
 			out.print("</form>");
 			out.print("<br>");
+			out.print('\n');
+			out.print('\n');
+
 		}
 
 
@@ -108,5 +131,7 @@
 <a href='CustomerRepPage.jsp'>Return to main page</a> 
 <br>
 
+</p>
+</center>
 </body>
 </html>

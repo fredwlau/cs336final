@@ -1,4 +1,10 @@
 
+<style>
+body {
+background-color: #7FFF00
+}
+</style>
+<center>
 <%
     if ((session.getAttribute("user") == null)) {
 		%>
@@ -16,3 +22,4 @@
 		<%
     }
 %>
+</center>

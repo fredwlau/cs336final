@@ -2,11 +2,18 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+<center>
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer Representative Account Deletion</title>
 </head>
 <body>
+
+<style>
+body {
+background-color: #ff0000
+}
+</style>
 
 Please enter CSR username to delete
 <br>
@@ -28,6 +35,6 @@ Please enter CSR username to delete
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</center>
 </body>
 </html>

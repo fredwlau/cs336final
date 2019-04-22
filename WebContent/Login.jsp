@@ -7,6 +7,13 @@
 <title>Login Page</title>
 </head>
 <body>
+<style>
+body {
+background-color: #d24dff
+}
+</style>
+
+<center>
 
 <br>
 	<form method="post" action="LoginSQL.jsp">
@@ -27,6 +34,7 @@
 	<input type="submit" value="Cancel">
 	</form>
 <br>
+</center>
 
 
 </body>

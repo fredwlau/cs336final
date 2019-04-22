@@ -48,7 +48,7 @@
 		
 		//Determines if a username belongs to EndUser or not
 		if(result == null || result == ""){
-			out.println("Username isn't an Customer Rep <a href='CustomerRepAccountDeletion.jsp'>try again</a>");
+			out.println("Username isn't an  <a href='CustomerRepAccountDeletion.jsp'>try again</a>");
 			
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();

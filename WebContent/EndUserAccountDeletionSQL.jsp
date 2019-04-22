@@ -33,7 +33,6 @@
 		}
 		
 		
-		//Pulls username attribute for EndUser Account
 		ResultSet rs;
 		rs = stmt.executeQuery("SELECT Username FROM EndUser WHERE Username='" + deleteUsername + "'");
 				
@@ -54,36 +53,34 @@
 			
 			return;
 		}
+		
 		//String delete = "SELECT Username FROM Account where Username = ?";
-				String delete_enduser = "DELETE FROM EndUser where Username = ?";
-				String delete_account = "DELETE FROM Account where Username = ?";
-				String delete_buyer = "DELETE FROM Buyer where Username =?";
-				
-				//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-				PreparedStatement ps1 = con.prepareStatement(delete_buyer);
-				PreparedStatement ps2 = con.prepareStatement(delete_enduser);
-				PreparedStatement ps3 = con.prepareStatement(delete_account);
+		String del1 = "DELETE FROM EndUser where Username = ?";
+		
+		String delete = "DELETE FROM Account where Username = ?";
+		
+		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+		PreparedStatement ps1 = con.prepareStatement(del1);
+		PreparedStatement ps2 = con.prepareStatement(delete);
 
-				//ps1.setInt(1);
-				//int del = ps1.executeUpdate();
-				//System.out.println("Deleted Account:", + del);
+		//ps1.setInt(1);
+		//int del = ps1.executeUpdate();
+		//System.out.println("Deleted Account:", + del);
 
-							//********************************************************************
-				//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-				ps1.setString(1, deleteUsername);
-				ps2.setString(1, deleteUsername);
-				ps3.setString(1, deleteUsername);
+					//********************************************************************
+		//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+		ps1.setString(1, deleteUsername);
+		ps2.setString(1, deleteUsername);
 
-				
-				//ps1.setString(2, deleteUsername);
-				ps1.executeUpdate();
-				ps2.executeUpdate();
-				ps3.executeUpdate();
+		out.print("End User Account has been successfully deleted");
 
-				out.print("User Account has been successfully deleted");
-							
-				//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
-				con.close();
+		
+		//ps1.setString(2, deleteUsername);
+		ps1.executeUpdate();
+		ps2.executeUpdate();
+					
+		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
+		con.close();
 		
 	} catch (Exception ex) {
 		out.print(ex);

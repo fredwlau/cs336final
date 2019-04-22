@@ -20,5 +20,11 @@ This auction will be deleted
 	</form>
 <br>
 
+<br>
+	<form method="post" action="CustomerRepPage.jsp">
+	<input type="submit" value="Cancel">
+	</form>
+<br>
+
 </body>
 </html>

@@ -9,7 +9,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
 </head>
-<body>							  
+<body>	
+<center>
+<style>
+body {
+background-color: #00FFFF
+}
+</style>	
+
+					  
 	<% 
 	try {
 
@@ -161,7 +169,7 @@
 		out.print("index failed");
 	} 	
 	%>
-	
+
 Register here if you don't have an account
 <br>
 	<form method="post" action="EndUserAccountCreation.jsp">
@@ -176,6 +184,6 @@ Login here if you have an account
 	<input type="submit" value="Login">
 	</form>
 <br>
-
+</center>
 </body>
 </html>
