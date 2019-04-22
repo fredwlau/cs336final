@@ -14,8 +14,9 @@
          user = "cs336auction"  password = "cs336auction"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
-      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, ItemSales, BidPrice
-      FROM AuctionItem a JOIN Clothing c ON a.ClothingCID=c.CID  JOIN Bids b ON a.AID=b.AID
+      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, 
+      MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID 
+      JOIN Bids b on b.AID = a.AID GROUP BY a.AID
       ORDER BY Color ASC; 
       </sql:query>
  
@@ -30,8 +31,10 @@
 	    	<th>Clothing Brand</th>
 	    	<th>Gender</th>
 	    	<th>Color</th>
-	    	<th>Sales</th>
 	    	<th>Current Bid</th>
+	    	<th>Your Bid</th>
+	    	<th>Automatic Bidding Threshold</th>
+	    	<th>Place Bid</th>
          </tr>
          
          <c:forEach var = "row" items = "${result.rows}">
@@ -45,8 +48,12 @@
                <td><c:out value = "${row.Brand}"/></td>
                <td><c:out value = "${row.Gender}"/></td>
                <td><c:out value = "${row.Color}"/></td>
-               <td><c:out value = "${row.ItemSales}"/></td>
                <td><c:out value = "${row.BidPrice}"/></td>
+               <form method = "post" action="AuctionBiddingSQL.jsp">
+               <td><input type="text" name="newBidPrice"></td>
+               <td><input type="text" name="newAutomaticBiddingPrice"></td>
+			   <td align='center'><input type=submit value="Bid"></td>
+			   <td><input type="hidden" name="newAID" value="${row.AID}"></td></form>
             </tr>
          </c:forEach>
       </table>
