@@ -19,16 +19,16 @@ Enter Clothing Information
 	<td>Brand</td><td><input type="text" name="newBrand"></td>
 	</tr>
 	<tr>  
-	<td>Gender</td><td><input type="text" name="newGender"></td>
+	<td>Gender (M/F)</td><td><input type="text" name="newGender"></td>
 	</tr>
 	<tr>
 	<td>Color</td><td><input type="text" name="newColor"></td>
 	</tr>
 	<tr>
-	<td>Shirt Width(Must be a real number such as 3.5)</td><td><input type="text" name="newShirtWidth"></td>
+	<td>Shirt Width (Must be a real number such as 3.5)</td><td><input type="text" name="newShirtWidth"></td>
 	</tr>
 	<tr>
-	<td>Shirt Length(Must be a real number such as 3.5)</td><td><input type="text" name="newShirtLength"></td>
+	<td>Shirt Length (Must be a real number such as 3.5)</td><td><input type="text" name="newShirtLength"></td>
 	</tr>
 	</table>
 	
