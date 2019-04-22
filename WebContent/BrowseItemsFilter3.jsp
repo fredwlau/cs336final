@@ -12,13 +12,15 @@
       <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
          url = "jdbc:mysql://cs336auction.cuwrm3eh7ohh.us-east-2.rds.amazonaws.com/CS3362"
          user = "cs336auction"  password = "cs336auction"/>
- 
- 	  <c:set var = "empId" value ="Type"/>
+ 	  
+ 	  <%String filter_gender = request.getParameter("Type");
+ 	  request.setAttribute("filter_gender", filter_gender);%>
+ 	  <c:set var = "empId" value ="${filter_gender}"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
-      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, ItemSales, BidPrice
-      FROM AuctionItem a JOIN Clothing c ON a.ClothingCID=c.CID  JOIN Bids b ON a.AID=b.AID
-      WHERE Gender = ?
+      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, 
+      MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID 
+      JOIN Bids b on b.AID = a.AID WHERE Gender = ? GROUP BY a.AID
       <sql:param value = "${empId}" />
       </sql:query>
  
@@ -33,8 +35,10 @@
 	    	<th>Clothing Brand</th>
 	    	<th>Gender</th>
 	    	<th>Color</th>
-	    	<th>Sales</th>
 	    	<th>Current Bid</th>
+	    	<th>Your Bid</th>
+	    	<th>Automatic Bidding Threshold</th>
+	    	<th>Place Bid</th>
          </tr>
          
          <c:forEach var = "row" items = "${result.rows}">
@@ -48,8 +52,12 @@
                <td><c:out value = "${row.Brand}"/></td>
                <td><c:out value = "${row.Gender}"/></td>
                <td><c:out value = "${row.Color}"/></td>
-               <td><c:out value = "${row.ItemSales}"/></td>
                <td><c:out value = "${row.BidPrice}"/></td>
+               <form method = "post" action="AuctionBiddingSQL.jsp">
+               <td><input type="text" name="newBidPrice"></td>
+               <td><input type="text" name="newAutomaticBiddingPrice"></td>
+			   <td align='center'><input type=submit value="Bid"></td>
+			   <td><input type="hidden" name="newAID" value="${row.AID}"></td></form>
             </tr>
          </c:forEach>
       </table>
@@ -93,10 +101,10 @@ Sort By Sales
 <br>
 Filter By Name
 <br>
-	<form method="GET" action="BrowseItemsFilter.jsp">
+	<form method="post" action="BrowseItemsFilter.jsp">
 	<table>
 	<tr>    
-	Type: <input type ="text" name = "Type">
+	<td>Name:<input type ="text" name = "Type"></td>
 	</tr>
 	</table>
 	<input type="submit" value="Return">
@@ -104,10 +112,10 @@ Filter By Name
 <br>
 Filter By Brand
 <br>
-	<form method="GET" action="BrowseItemsFilter2.jsp">
+	<form method="post" action="BrowseItemsFilter2.jsp">
 	<table>
 	<tr>    
-	Type: <input type ="text" name = "Type">
+	<td>Brand:<input type ="text" name = "Type"></td>
 	</tr>
 	</table>
 	<input type="submit" value="Return">
@@ -115,10 +123,10 @@ Filter By Brand
 <br>
 Filter By Gender
 <br>
-	<form method="GET" action="BrowseItemsFilter3.jsp">
+	<form method="post" action="BrowseItemsFilter3.jsp">
 	<table>
 	<tr>    
-	Type: <input type ="text" name = "Type">
+	<td>Gender:<input type ="text" name = "Type"></td>
 	</tr>
 	</table>
 	<input type="submit" value="Return">
@@ -126,10 +134,10 @@ Filter By Gender
 <br>
 Filter By Color
 <br>
-	<form method="GET" action="BrowseItemsFilter4.jsp">
+	<form method="post" action="BrowseItemsFilter4.jsp">
 	<table>
 	<tr>    
-	Type: <input type ="text" name = "Type">
+	<td>Color:<input type ="text" name = "Type"></td>
 	</tr>
 	</table>
 	<input type="submit" value="Return">

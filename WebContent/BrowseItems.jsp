@@ -94,10 +94,10 @@ Sort By Sales
 <br>
 Filter By Name
 <br>
-	<form method="GET" action="BrowseItemsFilter.jsp">
+	<form method="post" action="BrowseItemsFilter.jsp">
 	<table>
 	<tr>    
-	<td>Type</td><td><input type="text" name="Type"></td>
+	Name:<input type="text" name="Type">
 	</tr>
 	</table>
 	<input type="submit" value="Return">
@@ -105,10 +105,10 @@ Filter By Name
 <br>
 Filter By Brand
 <br>
-	<form method="GET" action="BrowseItemsFilter2.jsp">
+	<form method="post" action="BrowseItemsFilter2.jsp">
 	<table>
 	<tr>    
-    Type: <input type ="text" name = "Type">	
+    Brand:<input type ="text" name = "Type">	
     </tr>
 	</table>
 	<input type="submit" value="Return">
@@ -116,10 +116,10 @@ Filter By Brand
 <br>
 Filter By Gender
 <br>
-	<form method="GET" action="BrowseItemsFilter3.jsp">
+	<form method="post" action="BrowseItemsFilter3.jsp">
 	<table>
 	<tr>    
-	Type: <input type ="text" name = "Type">
+	Gender:<input type ="text" name = "Type">
 	</tr>
 	</table>
 	<input type="submit" value="Return">
@@ -127,10 +127,10 @@ Filter By Gender
 <br>
 Filter By Color
 <br>
-	<form method="GET" action="BrowseItemsFilter4.jsp">
+	<form method="post" action="BrowseItemsFilter4.jsp">
 	<table>
 	<tr>    
-	Type: <input type ="text" name = "Type">
+	Color:<input type ="text" name = "Type">
 	</tr>
 	</table>
 	<input type="submit" value="Return">
