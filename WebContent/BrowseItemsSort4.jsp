@@ -10,8 +10,8 @@
 
    <body>
       <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
-         url = "jdbc:mysql://tjm.ckankofgcdvh.us-east-2.rds.amazonaws.com:3306/CS3362"
-         user = "tjmould"  password = "thomas05"/>
+         url = "jdbc:mysql://cs336auction.cuwrm3eh7ohh.us-east-2.rds.amazonaws.com/CS3362"
+         user = "cs336auction"  password = "cs336auction"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
       SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, ItemSales, BidPrice
