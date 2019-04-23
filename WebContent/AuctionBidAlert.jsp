@@ -78,7 +78,9 @@
 			String alert = rs1.getString("Alert");
 			int aid = rs1.getInt("AID");
 			out.println(alert + " - AID: " + aid);
-			alertFlag = true;
+			alertFlag = true; %>
+			<br>
+			<% 
 		}
 		
 		if(alertFlag == false){
