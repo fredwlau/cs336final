@@ -22,6 +22,7 @@
 
 		//Get parameters from the HTML form at the AuctionCreationPart2Shoes.jsp
 		String newName = request.getParameter("newName");
+		String type = "Shoes";
 		
 		if(newName == null || newName == ""){
 			out.println("Clothing Name can't be empty <a href='AuctionCreationPart2Shoes.jsp'>try again</a>");
@@ -395,8 +396,8 @@
 		//If there is no match we insert into both tables, else nothing is inserted.
 		if(checkCID == 0){
 			//Make an insert statement for the Clothing table:
-			String insert1 = "INSERT INTO Clothing(Name, Brand, Gender, Color)"
-					+ "VALUES (?, ?, ?, ?)";
+			String insert1 = "INSERT INTO Clothing(Name, Brand, Gender, Color, Type)"
+					+ "VALUES (?, ?, ?, ?, ?)";
 						
 			//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 			PreparedStatement ps1 = con.prepareStatement(insert1);
@@ -406,6 +407,7 @@
 			ps1.setString(2, newBrand);
 			ps1.setString(3, newGender);
 			ps1.setString(4, newColor);
+			ps1.setString(5, type);
 			ps1.executeUpdate();
 			
 			//Pulls the CID of the most recent clothing item that was just inserted
@@ -529,6 +531,21 @@
 		ps5.setString(3, sellerUsername);
 		ps5.setInt(4, autobidprice);
 		ps5.executeUpdate();
+		
+		String shoes = "T";
+		String alert_username;
+		ResultSet rs;
+		rs = stmt.executeQuery("SELECT * FROM Interests WHERE Shoes = '" + shoes + "'");
+		while(rs.next()){
+			String alert = "Here is a new auction that we are showing you based on your interest in SHOES";
+			String insert6 = "INSERT INTO Alerts(Username, AID, Alert)" + "VALUES(?, ?, ?)";
+			alert_username = rs.getString("Username");
+			PreparedStatement ps6 = con.prepareStatement(insert6);
+			ps6.setString(1, alert_username);
+			ps6.setInt(2, new_AID);
+			ps6.setString(3, alert);
+			ps6.executeUpdate();
+		}
 					
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 		con.close();

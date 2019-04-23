@@ -38,7 +38,7 @@
 		
 		//Checks to make sure the current user is in the buyer table
 		if(testUsername == null || testUsername == ""){
-			out.println("You don't have any alerts <a href='EndUserPage.jsp'>Return to your Account</a>");
+			out.println("You don't have any bid alerts <a href='EndUserPage.jsp'>Return to your Account</a>");
 			
 			//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.
 			con.close();
@@ -66,11 +66,20 @@
 			
 			if(!username.equals(currentUsername)){
 				out.println("You were out bid in auction "+  currentAID);
+				out.print("\n");
 				alertFlag = true;
 				%>
 				<br><%
 			}
-		}	
+		}
+		
+		ResultSet rs1 = stmt.executeQuery("SELECT * FROM Alerts WHERE Username = '" + username + "'");
+		while(rs1.next()){
+			String alert = rs1.getString("Alert");
+			int aid = rs1.getInt("AID");
+			out.println(alert + " - AID: " + aid);
+			alertFlag = true;
+		}
 		
 		if(alertFlag == false){
 			out.println("You have no alerts");

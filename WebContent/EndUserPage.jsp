@@ -45,7 +45,7 @@ Bid on Auction
 	</form>
 <br>
 
-Check Bid Alerts
+Check Bid/Interest Alerts or Update your Interests
 <br>
 	<form method="post" action="AuctionBidAlert.jsp">
 	<input type="submit" value="Check">

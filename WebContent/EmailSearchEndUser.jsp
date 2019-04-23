@@ -35,6 +35,7 @@
 		//Assigns the result to a variable
 		while(rs.next()){
 			testUsername = rs.getString("EndUserUsername");
+			subject = rs.getString("Subject");
 			from = rs.getString("CustomerRepUsername");
 			if(rs.wasNull()){
 				from = "";
