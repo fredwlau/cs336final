@@ -15,7 +15,7 @@ background-color: #808000
 }
 </style>
 <Center>
-<title>End User Account Modification Part2</title>
+<title>Admin Report Page</title>
 </head>
 <body>
 
@@ -115,42 +115,21 @@ background-color: #808000
     	String name = "";
     	String brand = "";
     	double itemSales = 0.0;
-    	int offset = 0;
-    	myResult = st.executeQuery("select Name,Brand, itemSales from Clothing order by itemSales DESC Limit 25");
-    	
-    	if(myResult.next() == false){
-    		out.println("Database is empty");
-    	}
-    	else{
- 	   		out.print("Name");
- 	   		offset = 22;
- 	  	 	
- 	   		while(offset > 0){
- 	   			out.print("&nbsp;"); offset--;
- 	   		}
- 	   		offset = 24;
- 	   		out.print("Brand");
-	   		while(offset > 0){
-	   			out.print("&nbsp;"); offset--;
-	   		}
- 	   		out.print(" Sales <br/>");
- 	   		
-    		do{
- 				
-    			//Grab the name and decimal value from the tuple, determine offset based on side of name and # of digits in purchases, then print
-    			name = myResult.getString("Name");
-    			brand = myResult.getString("Brand");
-    			itemSales = myResult.getDouble("itemSales");
-    			offset = 35 - name.length() - brand.length();
-    			out.print(name);
-    			while(offset > 0){out.print("&nbsp;"); offset--;}
-    			out.print(brand);
-    			offset = 35 - brand.length() - (Double.toString(itemSales)).length();
-    			while(offset > 0){out.print("&nbsp;"); offset--;}
-    			out.print(itemSales + "<br/>");
-    		}while(myResult.next());
-    	
-   		}
+    	myResult = st.executeQuery("select Name, Brand, itemSales from Clothing order by itemSales DESC Limit 25");
+    	%>
+    	BEST SELLING ITEMS
+    	<br>
+    	<br>
+    	<%
+		while(myResult.next()){
+			name = myResult.getString("Name");
+			brand = myResult.getString("Brand");
+			itemSales = myResult.getDouble("itemSales");
+			out.print("Name: " + name + "---- Brand: " + brand + "---- Sales: " + itemSales);
+			%>
+			<br>
+			<%
+		}
     	
     	
     }
@@ -158,38 +137,25 @@ background-color: #808000
     //best buyers (users with highest purchases)
     if(flag.equals("5")){
     	
-    	String uname = "";
-    	String totalPurchase ="";
-    	int offset = 0;
+    	String username = "";
+    	int total_purchases = 0;
     	myResult = st.executeQuery("Select distinct WinnerUsername, sum(PriceSoldAt) as S from AuctionItem group by WinnerUsername order by S desc Limit 25");
-    	
-    	if(myResult.next() == false){
-    		out.println("Database is empty");
-    	}
-    	else{
- 	   		out.print("Username");
- 	   		offset = 10;
- 	  	 	
- 	   		while(offset > 0){
- 	   			out.print("&nbsp;"); offset--;
- 	   		}
- 	   		out.print(" TotalPurchases <br/>");
- 	   		
-    		do{
- 				
-    			//Grab the name and decimal value from the tuple, determine offset based on side of name and # of digits in purchases, then print
-    			uname = myResult.getString("WinnerUsername");
-    			totalPurchase = myResult.getString("S");
-    			if(!uname.equals("none")){
-    			if(totalPurchase == null){totalPurchase="0.0";}
-    			offset = 35 - uname.length() - totalPurchase.length();
-    			out.print(uname);
-    			while(offset > 0){out.print("&nbsp;"); offset--;}
-    			out.print(totalPurchase + "<br/>");
-    			}
-    		}while(myResult.next());
-    	
-   		}
+    	%>
+    	BEST PURCHASERS
+    	<br>
+    	<br>
+    	<%
+		while(myResult.next()){
+			if(myResult.getString("WinnerUsername") == null){
+				continue;
+			}
+			username = myResult.getString("WinnerUsername");
+			total_purchases = myResult.getInt("S");
+			out.print("Username: " + username + "---- Total Spendings: " + total_purchases);
+			%>
+			<br>
+			<% 
+		}
 
     
     }
