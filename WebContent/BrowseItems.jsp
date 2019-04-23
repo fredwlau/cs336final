@@ -19,7 +19,7 @@ background-color: #E6E6FA
          user = "cs336auction"  password = "cs336auction"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
-      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Type, Gender, Color, MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID JOIN Bids b on b.AID = a.AID GROUP BY a.AID;
+      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Type, Gender, Color, MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID JOIN Bids b on b.AID = a.AID WHERE WinnerUsername is null GROUP BY a.AID;
       </sql:query>
  
       <table border = "1" width = "100%">

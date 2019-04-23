@@ -25,7 +25,7 @@ background-color: #E6E6FA
       <sql:query dataSource = "${snapshot}" var = "result">
       SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Type, Gender, Color, 
       MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID 
-      JOIN Bids b on b.AID = a.AID WHERE Brand = ? GROUP BY a.AID
+      JOIN Bids b on b.AID = a.AID WHERE WinnerUsername is null AND Brand = ? GROUP BY a.AID
       <sql:param value = "${empId}" />
       </sql:query>
  
