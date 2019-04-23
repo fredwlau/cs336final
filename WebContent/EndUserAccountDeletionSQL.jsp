@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #DC143C
+}
+</style>
+<Center>
 <title>End User Account Deletion Part2</title>
 </head>
 <body>
@@ -91,6 +97,6 @@
 <br>
 <a href='CustomerRepPage.jsp'>Return to main page</a> 
 <br>
-
+</Center>
 </body>
 </html>

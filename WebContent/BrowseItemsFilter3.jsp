@@ -5,6 +5,11 @@
 
 <html>
    <head>
+   <style>
+body {
+background-color: #E6E6FA
+}
+</style>
       <title>Browse Items</title>
    </head>
 
@@ -63,7 +68,7 @@
             </tr>
          </c:forEach>
       </table>
-
+<Center>
 
 Sort by Name
 <br>
@@ -151,11 +156,23 @@ Filter By Color
 	<input type="submit" value="Return">
 	</form>
 <br>
+Filter By Type
+<br>
+	<form method="post" action="BrowseItemsFilter5.jsp">
+	<table>
+	<tr>    
+	Type:<input type ="text" name = "Type">
+	</tr>
+	</table>
+	<input type="submit" value="Return">
+	</form>
+<br>
 Return to main page
 <br>
 	<form method="post" action="EndUserPage.jsp">
 	<input type="submit" value="Return">
 	</form>
 <br>
+</Center>
 </body>
 </html>

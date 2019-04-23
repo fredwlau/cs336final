@@ -6,6 +6,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #4169E1
+}
+</style>
+<Center>
 <title>View Auction History</title>
 </head>
 <body>
@@ -116,5 +122,6 @@ Return to main page
 	<input type="submit" value="Return">
 	</form>
 <br>
+</Center>
 </body>
 </html>

@@ -7,6 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<style>
+body {
+background-color: #228B22
+}
+</style>
+<Center>
 <title>End User Account Modification Part2</title>
 </head>
 <body>
@@ -263,9 +270,10 @@
 		out.print("Failed to Update End User Account");
 	}
 %>
-
 <br>
 <a href='CustomerRepPage.jsp'>Return to main page</a> 
 <br>
+</Center>
+
 
 </body>

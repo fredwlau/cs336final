@@ -6,6 +6,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #DB7093
+}
+</style>
+<Center>
 <title>View Bid History</title>
 </head>
 <body>
@@ -79,6 +85,6 @@ Return to main page
 	</form>
 <br>
 
-
+</Center>
 </body>
 </html>

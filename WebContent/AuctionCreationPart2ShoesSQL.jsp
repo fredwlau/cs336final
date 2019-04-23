@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #F4A460
+}
+</style>
+<Center>
 <title>Auction Creation Part 2 Shoes SQL</title>
 </head>
 <body>
@@ -560,6 +566,6 @@
 <br>
 <a href='EndUserPage.jsp'>Return to main page</a> 
 <br>
-
+</Center>
 </body>
 </html>

@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #FFC0CB
+}
+</style>
+<Center>
 <title>Auction Creation</title>
 </head>
 <body>
@@ -25,6 +31,6 @@ Choose the type of clothing you want to put up for auction
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>

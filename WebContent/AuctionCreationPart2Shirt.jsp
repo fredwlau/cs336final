@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #B0E0E6
+}
+</style>
+<Center>
 <title>Auction Creation Shirt</title>
 </head>
 <body>
@@ -61,6 +67,6 @@ Enter Clothing Information
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>

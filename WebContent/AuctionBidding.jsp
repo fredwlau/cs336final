@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #FF6347
+}
+</style>
+<Center>
 <title>Auction Bidding</title>
 </head>
 <body>
@@ -31,6 +37,6 @@
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>

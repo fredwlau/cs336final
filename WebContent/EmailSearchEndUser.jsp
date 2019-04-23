@@ -7,8 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #EEE8AA
+}
+</style>
+<Center>
 <title>Email Search End User</title>
 </head>
+
+<P ALIGN=CENTER>
 <body>
 	<%
 	try {
@@ -99,10 +107,10 @@
 		out.print("alert failed");
 	} 	
 %>
-
+</P>
 <br>
 <a href='EndUserPage.jsp'>Return to main page</a> 
 <br>
-
+</Center>
 </body>
 </html>

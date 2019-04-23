@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #BC8F8F
+}
+</style>
+<Center>
 <title>Auction Creation Pants</title>
 </head>
 <body>

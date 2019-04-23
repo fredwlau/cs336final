@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #00FA9A
+}
+</style>
+<Center>
 <title>Auction Bid Alert</title>
 </head>
 <body>
@@ -118,6 +124,6 @@ Set your Auction Interests here:
 <br>
 <a href='EndUserPage.jsp'>Return to main page</a> 
 <br>
-
+</Center>
 </body>
 </html>

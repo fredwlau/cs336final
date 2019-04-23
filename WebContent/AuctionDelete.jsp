@@ -3,6 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+background-color: #FFE4B5
+}
+</style>
+<Center>
 <title>Auction Delete</title>
 </head>
 <body>
@@ -25,6 +31,6 @@ This auction will be deleted
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>

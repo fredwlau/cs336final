@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #F5FFFA
+}
+</style>
+<Center>
 <title>Report Page</title>
 </head>
 <body>

@@ -8,6 +8,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #4169E1
+}
+</style>
+<Center>
 <title>End User Similiar Item Search</title>
 </head>
 <body>
@@ -128,11 +134,11 @@
 %>
 <br>
 Return to main page
-<br>
+</br>
 	<form method="post" action="EndUserPage.jsp">
 	<input type="submit" value="Return">
 	</form>
 <br>
-
-<body>
+</Center>
+</body>
 </html>

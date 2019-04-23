@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #FFE4E1
+}
+</style>
+<Center>
 <title>End User Email</title>
 </head>
 <body>
@@ -27,6 +33,6 @@
 <br>
 
 
-
+</Center>
 </body>
 </html>

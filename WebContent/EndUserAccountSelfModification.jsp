@@ -4,6 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+
+<style>
+body {
+background-color: #8FBC8F
+}
+</style>
+
+<Center>
 <title>End User Account Self Modification</title>
 </head>
 <body>
@@ -59,6 +68,6 @@
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>

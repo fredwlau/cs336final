@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #FF4500
+}
+</style>
+<Center>
 <title>Customer Rep Account Modification Part2</title>
 </head>
 <body>
@@ -160,5 +166,5 @@
 <br>
 <a href='AdminPage.jsp'>Return to main page</a> 
 <br>
-
+</Center>
 </body>

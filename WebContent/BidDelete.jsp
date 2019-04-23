@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #B0C4DE
+}
+</style>
+<Center>
 <title>Bid Deletion</title>
 </head>
 <body>
@@ -29,6 +35,6 @@ Remove a Bid From an Auction
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>

@@ -9,6 +9,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #808000
+}
+</style>
+<Center>
 <title>End User Account Modification Part2</title>
 </head>
 <body>
@@ -198,6 +204,6 @@ Return to Report page
 	<input type="submit" value="Return">
 	</form>
 <br>
-
-<body>
+</Center>
+</body>
 </html>

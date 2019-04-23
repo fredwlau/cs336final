@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #00FA9A
+}
+</style>
+<Center>
 <title>Account Creation Part 2</title>
 </head>
 <body>
@@ -137,6 +143,6 @@
 <br>
 <a href='AdminPage.jsp'>Return to main page</a> 
 <br>
-
+</Center>
 </body>
 </html>

@@ -4,6 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<style>
+body {
+background-color: #4682B4
+}
+</style>
+<Center>
 <title>Account Creation</title>
 </head>
 <body>
@@ -66,6 +72,6 @@
 	<input type="submit" value="Cancel">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>
