@@ -7,6 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+body {
+background-color: #B0C4DE
+}
+</style>
+<Center>
 <title>CS336 Auction</title>
 </head>
 <body>
@@ -24,6 +30,6 @@ Login here if you have an account
 	<input type="submit" value="Login">
 	</form>
 <br>
-
+</Center>
 </body>
 </html>
