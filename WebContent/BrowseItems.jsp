@@ -14,7 +14,7 @@
          user = "cs336auction"  password = "cs336auction"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
-      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID JOIN Bids b on b.AID = a.AID GROUP BY a.AID;
+      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Type, Gender, Color, MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID JOIN Bids b on b.AID = a.AID GROUP BY a.AID;
       </sql:query>
  
       <table border = "1" width = "100%">
@@ -26,6 +26,7 @@
 	    	<th>Clothing ID Number</th>
 	    	<th>Clothing Name</th>
 	    	<th>Clothing Brand</th>
+	    	<th>Clothing Type</th>
 	    	<th>Gender</th>
 	    	<th>Color</th>
 	    	<th>Current Bid</th>
@@ -43,6 +44,7 @@
  	       	   <td><c:out value = "${row.CID}"/></td>
                <td><c:out value = "${row.Name}"/></td>
                <td><c:out value = "${row.Brand}"/></td>
+               <td><c:out value = "${row.Type}"/></td>
                <td><c:out value = "${row.Gender}"/></td>
                <td><c:out value = "${row.Color}"/></td>
                <td><c:out value = "${row.BidPrice}"/></td>
@@ -89,6 +91,12 @@ Sort by Price
 Sort By Sales
 <br>
 	<form method="post" action="BrowseItemsSort6.jsp">
+	<input type="submit" value="Return">
+	</form>
+<br>
+Sort By Type
+<br>
+	<form method="post" action="BrowseItemsSort7.jsp">
 	<input type="submit" value="Return">
 	</form>
 <br>

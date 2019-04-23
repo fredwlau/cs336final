@@ -39,7 +39,6 @@
 			if(rs.wasNull()){
 				from = "";
 			}
-			subject = rs.getString("Subject");
 			dateAndTime = rs.getString("Date_Time");
 			content = rs.getString("Content");
 			if(from.equals("")){
@@ -54,6 +53,7 @@
 				out.print("<br>");
 				continue;
 			}
+
 			else{
 				//if subject length is less then 12 it CANNOT be a response
 				if(subject.length()>=12){

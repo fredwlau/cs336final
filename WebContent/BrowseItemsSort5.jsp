@@ -14,7 +14,7 @@
          user = "cs336auction"  password = "cs336auction"/>
  
       <sql:query dataSource = "${snapshot}" var = "result">
-      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Gender, Color, 
+      SELECT a.AID, InitialPrice, CloseOutDateTime, SellerUsername, CID, Name, Brand, Type, Gender, Color,
       MAX(BidPrice) as BidPrice FROM AuctionItem a JOIN Clothing c on a.ClothingCID = c.CID 
       JOIN Bids b on b.AID = a.AID GROUP BY a.AID
       ORDER BY BidPrice ASC;
@@ -29,6 +29,7 @@
 	    	<th>Clothing ID Number</th>
 	    	<th>Clothing Name</th>
 	    	<th>Clothing Brand</th>
+	    	<th>Clothing Type</th>
 	    	<th>Gender</th>
 	    	<th>Color</th>
 	    	<th>Current Bid</th>
@@ -46,6 +47,7 @@
  	       	   <td><c:out value = "${row.CID}"/></td>
                <td><c:out value = "${row.Name}"/></td>
                <td><c:out value = "${row.Brand}"/></td>
+               <td><c:out value = "${row.Type}"/></td>
                <td><c:out value = "${row.Gender}"/></td>
                <td><c:out value = "${row.Color}"/></td>
                <td><c:out value = "${row.BidPrice}"/></td>
@@ -95,9 +97,15 @@ Sort By Sales
 	<input type="submit" value="Return">
 	</form>
 <br>
+Sort By Type
+<br>
+	<form method="post" action="BrowseItemsSort7.jsp">
+	<input type="submit" value="Return">
+	</form>
+<br>
 Filter By Name
 <br>
-	<form method="GET" action="BrowseItemsFilter.jsp">
+	<form method="post" action="BrowseItemsFilter.jsp">
 	<table>
 	<tr>    
 	Type: <input type ="text" name = "Type">
@@ -108,7 +116,7 @@ Filter By Name
 <br>
 Filter By Brand
 <br>
-	<form method="GET" action="BrowseItemsFilter2.jsp">
+	<form method="post" action="BrowseItemsFilter2.jsp">
 	<table>
 	<tr>    
 	Type: <input type ="text" name = "Type">
@@ -119,7 +127,7 @@ Filter By Brand
 <br>
 Filter By Gender
 <br>
-	<form method="GET" action="BrowseItemsFilter3.jsp">
+	<form method="post" action="BrowseItemsFilter3.jsp">
 	<table>
 	<tr>    
 	Type: <input type ="text" name = "Type">
@@ -130,7 +138,7 @@ Filter By Gender
 <br>
 Filter By Color
 <br>
-	<form method="GET" action="BrowseItemsFilter4.jsp">
+	<form method="post" action="BrowseItemsFilter4.jsp">
 	<table>
 	<tr>    
 	Type: <input type ="text" name = "Type">

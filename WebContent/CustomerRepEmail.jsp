@@ -48,16 +48,16 @@ background-color: #FAFAD2
 			dateAndTime = rs1.getString("Date_Time");
 			content = rs1.getString("Content");
 			//CSR Response Email, parse the original subject and query that email
+	
 			if(subject.length()>=12 && subject.charAt(11)==':'){
 				originalSubject = subject.substring(13);
 				rs2 = stmt2.executeQuery("SELECT * FROM Emails WHERE EndUserUsername='"+username+"' AND Subject='"+originalSubject+"'");
 				rs2.next();
 				originalDT=rs2.getString("Date_Time");
 				originalContent=rs2.getString("Content");
+				out.print("<br>");
 				out.print("ORIGINAL QUESTION-----------------------------------------------------------------------------------------------");
 				out.print("<br>");
-				out.print('\n');
-				out.print('\n');
 				out.print("ORIGINAL DATE AND TIME: " + originalDT);
 				out.print("<br>");
 				out.print("ORIGINAL SUBJECT: " + originalSubject);
@@ -72,20 +72,17 @@ background-color: #FAFAD2
 				out.print("<br>");
 				out.print("-------->SUBJECT: " + subject);
 				out.print("<br>");
-				out.print('\n');
 				out.print("-------->MESSAGE: " +content);
 				out.print("<br>");
-				out.print("<br>");
-				out.print('\n');
-				out.print('\n');
+				out.print("<br>");		
 				}
 			else{
 				continue;
 			}
 		}
-		
+
 		rs = stmt.executeQuery("SELECT * FROM Emails WHERE CustomerRepUsername is NULL");
-		
+
 		//unanswered questions
 		while(rs.next()){
 			EID = rs.getInt("EID");
@@ -94,8 +91,6 @@ background-color: #FAFAD2
 			dateAndTime = rs.getString("Date_Time");
 			content = rs.getString("Content");
 			out.print("UNANSWERED QUESTIONS-----------------------------------------------------------------------------------------------------------");
-			out.print('\n');
-			out.print('\n');
 			out.print("<br>");
 			out.print("FROM: " + username);
 			out.print("<br>");
@@ -110,16 +105,12 @@ background-color: #FAFAD2
 			out.print("<input type=\"hidden\" id=\"thisField0\" name=\"username\" value=" + username + ">");
 			out.print("<input type=\"hidden\" id=\"thisField1\" name=\"subject\" value=" + subject + ">");
 			out.print("<input type=\"hidden\" id=\"thisField2\" name=\"dateAndTime\" value=" + dateAndTime + ">");
-			out.print('\n');
 			out.print("<input type=\"hidden\" id=\"thisField3\" name=\"content\" value=" + content + ">");
 			out.print("<input type=\"submit\" value=\"Reply\">");
 			out.print("</form>");
 			out.print("<br>");
-			out.print('\n');
-			out.print('\n');
 
 		}
-
 
 	} catch (Exception ex) {
 		out.print(ex);
