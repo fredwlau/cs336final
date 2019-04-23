@@ -19,8 +19,8 @@ background-color: #DB7093
 
 <%
 	String passedAID = request.getParameter("auction ID");
-	ApplicationDB db = new ApplicationDB();	
-	Connection con = db.getConnection();
+	Connection con = DriverManager.getConnection("jdbc:mysql://cs336auction.cuwrm3eh7ohh.us-east-2.rds.amazonaws.com/CS3362","cs336auction", "cs336auction");
+
 	Statement st = con.createStatement();
 	ResultSet myResult;
 	int offset = 0;

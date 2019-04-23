@@ -15,8 +15,8 @@ background-color: #E6E6FA
       <title>Similar Items</title>
    </head>
 	<%
-	ApplicationDB db = new ApplicationDB(); 
-    Connection con = db.getConnection();
+    Connection con = DriverManager.getConnection("jdbc:mysql://cs336auction.cuwrm3eh7ohh.us-east-2.rds.amazonaws.com/CS3362","cs336auction", "cs336auction");
+
     Statement st = con.createStatement();
     String string_cid = request.getParameter("CID");
     int cid = Integer.parseInt(string_cid);

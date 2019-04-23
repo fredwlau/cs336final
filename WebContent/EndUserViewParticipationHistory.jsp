@@ -18,8 +18,8 @@ background-color: #4169E1
 <%
 	
 	String passedUsername = request.getParameter("Username");
-	ApplicationDB db = new ApplicationDB();	
-	Connection con = db.getConnection();
+	Connection con = DriverManager.getConnection("jdbc:mysql://cs336auction.cuwrm3eh7ohh.us-east-2.rds.amazonaws.com/CS3362","cs336auction", "cs336auction");
+
 	Statement st = con.createStatement();
 	ResultSet myResult;
 	int offset = 0;

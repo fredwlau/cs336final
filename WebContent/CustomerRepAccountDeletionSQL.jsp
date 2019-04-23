@@ -22,8 +22,8 @@ background-color: #00FA9A
 	try {
 
 		//Get the database connection
-		ApplicationDB db = new ApplicationDB();	
-		Connection con = db.getConnection();
+		Connection con = DriverManager.getConnection("jdbc:mysql://cs336auction.cuwrm3eh7ohh.us-east-2.rds.amazonaws.com/CS3362","cs336auction", "cs336auction");
+
 
 		//Create a SQL statement
 		Statement stmt = con.createStatement();
