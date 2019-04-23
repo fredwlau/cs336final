@@ -43,4 +43,5 @@
     else {
         out.println("Invalid password <a href='index.jsp'>try again</a>");
     }
+	con.close();
 %>
