@@ -65,49 +65,22 @@ background-color: #E6E6FA
          </c:forEach>
       </table>
 <Center>
-
-Sort by Name
 <br>
-	<form method="post" action="BrowseItemsSort1.jsp">
-	<input type="submit" value="Return">
-	</form>
 <br>
-Sort by Brand
+SORT BY
 <br>
-	<form method="post" action="BrowseItemsSort2.jsp">
-	<input type="submit" value="Return">
-	</form>
-<br>
-Sort by Gender
-<br>
-	<form method="post" action="BrowseItemsSort3.jsp">
-	<input type="submit" value="Return">
-	</form>
-<br>
-Sort By Color
-<br>
-	<form method="post" action="BrowseItemsSort4.jsp">
-	<input type="submit" value="Return">
-	</form>
-<br>
-Sort by Price
-<br>
-	<form method="post" action="BrowseItemsSort5.jsp">
-	<input type="submit" value="Return">
-	</form>
-<br>
-Sort By Sales
-<br>
-	<form method="post" action="BrowseItemsSort6.jsp">
-	<input type="submit" value="Return">
-	</form>
-<br>
-Sort By Type
-<br>
-	<form method="post" action="BrowseItemsSort7.jsp">
-	<input type="submit" value="Return">
-	</form>
-<br>
+<form method="post" action="SortIntermediate.jsp">
+<select name="Type">
+  <option value="Name">Name</option>
+  <option value="Brand">Brand</option>
+  <option value="Gender">Gender</option>
+  <option value="Color">Color</option>
+  <option value="Price">Price</option>
+  <option value="Sales">Sales</option>
+  <option value="Type">Type</option>
+</select>
+<input type ="submit" value="Sort">
+</form>
 Filter By Name
 <br>
 	<form method="post" action="BrowseItemsFilter.jsp">
