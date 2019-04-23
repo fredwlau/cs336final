@@ -28,6 +28,35 @@ background-color: #00FA9A
 		
 		//Holds the username of the person accessing the alert
 		String username = (String)session.getAttribute("user");
+		username = username.toLowerCase();
+		
+		java.util.Date date = new java.util.Date();
+		Timestamp current = new Timestamp(date.getTime());
+		
+		ResultSet r;
+		r = stmt.executeQuery("SELECT * FROM AuctionItem");
+		%>
+		AUCTIONS WON
+		<br>
+		<br>
+		<%
+		while(r.next()){
+			Timestamp closeoutdatetime = r.getTimestamp("CloseOutDateTime");
+			int aid = 0;
+			int winning_price;
+			if(closeoutdatetime.before(current)){
+				String winning_username = r.getString("WinnerUsername");
+				winning_username = winning_username.toLowerCase();
+				if(username.equals(winning_username)){
+					winning_price = r.getInt("PriceSoldAt");
+					aid = r.getInt("AID");
+					out.print("You won auction " + aid + " for " + winning_price + " dollars");
+					%>
+					<br>
+					<%
+				}
+			}
+		}
 		
 		//Tries to pull current user's username from Buyer list
 		ResultSet rs;
@@ -41,6 +70,13 @@ background-color: #00FA9A
 			testUsername = rs.getString("Username");
 			
 		}
+		%>
+		<br>
+		<br>
+		OUTBID ALERTS
+		<br>
+		<br>
+		<% 
 		
 		//Checks to make sure the current user is in the buyer table
 		if(testUsername == null || testUsername == ""){
@@ -78,7 +114,13 @@ background-color: #00FA9A
 				<br><%
 			}
 		}
-		
+		%>
+		<br>
+		<br>
+		INTEREST ALERTS
+		<br>
+		<br>
+		<%
 		ResultSet rs1 = stmt.executeQuery("SELECT * FROM Alerts WHERE Username = '" + username + "'");
 		while(rs1.next()){
 			String alert = rs1.getString("Alert");
@@ -101,7 +143,7 @@ background-color: #00FA9A
 
 <br>
 <br>
-Set your Auction Interests here:
+SET YOUR AUCTION INTERESTS BELOW
 <br>
 <br>
 	<form method="post" action="InterestsSQL.jsp">
