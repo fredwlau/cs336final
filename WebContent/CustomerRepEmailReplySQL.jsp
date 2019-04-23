@@ -24,6 +24,7 @@
 		String newSubject = "Response to: " + request.getParameter("subject");
 		String newContent = request.getParameter("newContent");
 		int EID = Integer.parseInt(request.getParameter("EID"));
+		int REF = EID;
 					
 		if(newContent == null || newContent == ""){
 			out.println("Content can't be empty <a href='CustomerRepEmailReply.jsp'>try again</a>");
@@ -42,8 +43,8 @@
 		java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
 												
 		//Make an insert statement for the Emails table:
-		String insert1 = "INSERT INTO Emails(EndUserUsername, CustomerRepUsername, Subject, Date_Time, Content)"
-				+ "VALUES (?, ?, ?, ?, ?)";
+		String insert1 = "INSERT INTO Emails(EndUserUsername, CustomerRepUsername, Subject, Date_Time, Content, REF)"
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 					
 		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 		PreparedStatement ps1 = con.prepareStatement(insert1);
@@ -54,6 +55,7 @@
 		ps1.setString(3, newSubject);
 		ps1.setTimestamp(4, currentTimestamp);
 		ps1.setString(5, newContent);
+		ps1.setInt(6, REF);
 		ps1.executeUpdate();
 		
 		String update = "UPDATE Emails SET CustomerRepUsername = ? WHERE EID = ?";

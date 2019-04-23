@@ -18,7 +18,7 @@
 	<td>Enter the subject of your question </td><td><input type="text" name="newSubject"></td>
 	</tr>
 	<tr>    
-	<td>Put your question here</td><td><input type="text" name="newContent"></td>
+	<td>Put your question here</td><td><textarea rows="4" cols="50" name="newContent"></textarea></td>
 	</tr>
 	</table>
 	

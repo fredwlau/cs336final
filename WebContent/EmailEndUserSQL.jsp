@@ -22,7 +22,7 @@
 
 		//Get parameters from the HTML form at the AuctionCreationPart2Shirt.jsp
 		String newSubject = request.getParameter("newSubject");
-		
+		int REF = -1;
 		if(newSubject == null || newSubject == ""){
 			out.println("Subject can't be empty <a href='EmailEndUser.jsp'>try again</a>");
 					
@@ -51,8 +51,8 @@
 		java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
 												
 		//Make an insert statement for the Emails table:
-		String insert1 = "INSERT INTO Emails(EndUserUsername, Subject, Date_Time, Content)"
-				+ "VALUES (?, ?, ?, ?)";
+		String insert1 = "INSERT INTO Emails(EndUserUsername, Subject, Date_Time, Content, REF)"
+				+ "VALUES (?, ?, ?, ?, ?)";
 					
 		//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 		PreparedStatement ps1 = con.prepareStatement(insert1);
@@ -62,6 +62,7 @@
 		ps1.setString(2, newSubject);
 		ps1.setTimestamp(3, currentTimestamp);
 		ps1.setString(4, newContent);
+		ps1.setInt(5, REF);
 		ps1.executeUpdate(); 
 					
 		//Close the connection. Don't forget to do it, otherwise you're keeping the resources of the server allocated.

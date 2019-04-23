@@ -36,25 +36,33 @@ background-color: #FAFAD2
 		
 		ResultSet rs, rs1, rs2;
 		
-		String username, subject, dateAndTime, content, originalSubject, originalDT, originalContent;
-		int EID;
+		String username, csr, subject, dateAndTime, content, originalSubject, originalDT, originalContent;
 		
 		String CSRUsername = (String)session.getAttribute("user");
 		rs1 = stmt1.executeQuery("SELECT * FROM Emails WHERE CustomerRepUsername='"+CSRUsername+"'");
+		
 		//first list emails that the CSR has responded to
 		while(rs1.next()){
-			username = rs1.getString("EndUserUsername");
-			subject = rs1.getString("Subject");
-			dateAndTime = rs1.getString("Date_Time");
-			content = rs1.getString("Content");
-			//CSR Response Email, parse the original subject and query that email
-	
-			if(subject.length()>=12 && subject.charAt(11)==':'){
-				originalSubject = subject.substring(13);
-				rs2 = stmt2.executeQuery("SELECT * FROM Emails WHERE EndUserUsername='"+username+"' AND Subject='"+originalSubject+"'");
+			
+			//email is a response to another email
+			if(rs1.getInt("REF")!= -1){
+				int eid = rs1.getInt("REF");
+				rs2 = stmt2.executeQuery("SELECT * FROM Emails WHERE EID = '" + eid + "'");
+				
+				//response email
+				username = rs1.getString("EndUserUsername");
+				csr = rs1.getString("CustomerRepUsername");
+				subject = rs1.getString("Subject");
+				dateAndTime = rs1.getString("DATE_TIME");
+				content = rs1.getString("Content");
+				
+				//original email
 				rs2.next();
-				originalDT=rs2.getString("Date_Time");
-				originalContent=rs2.getString("Content");
+				originalSubject = rs2.getString("Subject");
+				originalDT = rs2.getString("DATE_TIME");
+				originalContent = rs2.getString("Content");
+				
+				//output the results
 				out.print("<br>");
 				out.print("ORIGINAL QUESTION-----------------------------------------------------------------------------------------------");
 				out.print("<br>");
@@ -75,17 +83,15 @@ background-color: #FAFAD2
 				out.print("-------->MESSAGE: " +content);
 				out.print("<br>");
 				out.print("<br>");		
-				}
-			else{
-				continue;
 			}
+
 		}
 
 		rs = stmt.executeQuery("SELECT * FROM Emails WHERE CustomerRepUsername is NULL");
 
 		//unanswered questions
 		while(rs.next()){
-			EID = rs.getInt("EID");
+			int EID = rs.getInt("EID");
 			username = rs.getString("EndUserUsername");
 			subject = rs.getString("Subject");
 			dateAndTime = rs.getString("Date_Time");
@@ -100,16 +106,30 @@ background-color: #FAFAD2
 			out.print("<br>");
 			out.print("MESSAGE: " +content);
 			out.print("<br>");
-			out.print("<form method=\"post\" action=\"CustomerRepEmailReply.jsp\">");
-			out.print("<input type=\"hidden\" id=\"thisField\" name=\"EID\" value=" + EID + ">");
-			out.print("<input type=\"hidden\" id=\"thisField0\" name=\"username\" value=" + username + ">");
-			out.print("<input type=\"hidden\" id=\"thisField1\" name=\"subject\" value=" + subject + ">");
-			out.print("<input type=\"hidden\" id=\"thisField2\" name=\"dateAndTime\" value=" + dateAndTime + ">");
-			out.print("<input type=\"hidden\" id=\"thisField3\" name=\"content\" value=" + content + ">");
-			out.print("<input type=\"submit\" value=\"Reply\">");
-			out.print("</form>");
-			out.print("<br>");
-
+			%>
+			<br>
+			<form method="post" action="CustomerRepEmailReplySQL.jsp">
+			<table>
+			<tr>    
+			<td>Type your response:</td>
+			</tr>
+			<tr>
+			<td><textarea rows="4" cols="50" name="newContent"></textarea></td>
+			</tr>
+			<td><input type="hidden" id="thisField0" name="EID" value="<%=EID%>"></td>
+			</tr>
+			<tr>
+			<td><input type="hidden" id="thisField1" name="EndUsername" value="<%=username%>"></td>
+			</tr>
+			<tr>
+			<td><input type="hidden" id="thisField2" name="subject" value="<%=subject%>"></td>
+			</tr>
+			</table>
+			
+			<input type="submit" value="Submit Response">
+			</form>
+			<br>
+			<% 
 		}
 
 	} catch (Exception ex) {
