@@ -92,6 +92,28 @@
 %>
 
 <br>
+<br>
+Set your Auction Interests here:
+<br>
+<br>
+	<form method="post" action="InterestsSQL.jsp">
+	Interested in (select all that apply):
+	<br>
+	<table>
+	<tr>    
+	<input type="checkbox" name="type1" value="Shirts"> Shirts<br/>
+	</tr>
+	<tr>
+	<input type ="checkbox" name = "type2" value ="Shoes"> Shoes<br/>
+	</tr>
+	<tr>
+	<input type ="checkbox" name = "type3" value="Pants"> Pants<br/>
+	</tr>
+	</table>
+	<input type="submit" value="Update Interests">
+	</form>
+
+<br>
 <a href='EndUserPage.jsp'>Return to main page</a> 
 <br>
 
