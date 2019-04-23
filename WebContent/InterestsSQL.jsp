@@ -26,21 +26,24 @@
 		String username = (String)session.getAttribute("user");
 		String shirts_sql, shoes_sql, pants_sql;
 		String insert_interests = "INSERT INTO Interests(Username, Shirt, Shoes, Pants)" + "VALUES(?, ?, ?, ?)";
-		String update_interests = "UPDATE Bids SET Shirt = ?, Shoes = ?, Pants = ? WHERE Username = ?";
-				
-		if(shirts.equals("Shirts")){
+		String update_interests = "UPDATE Interests SET Shirt = ?, Shoes = ?, Pants = ? WHERE Username = ?";
+		
+
+		if(shirts!=null){
 			shirts_sql = "T";
 		}
 		else{
 			shirts_sql = "F";
 		}
-		if(shoes.equals("Shoes")){
+
+		if(shoes!=null){
 			shoes_sql = "T";
 		}
 		else{
 			shoes_sql = "F";
 		}
-		if(pants.equals("Pants")){
+
+		if(pants!=null){
 			pants_sql = "T";
 		}
 		else{
@@ -55,6 +58,7 @@
 			ps1.setString(1, shirts_sql);
 			ps1.setString(2, shoes_sql);
 			ps1.setString(3, pants_sql);
+			ps1.setString(4, username);
 			ps1.executeUpdate();
 			out.print("Your interests were successfully updated");
 		}
